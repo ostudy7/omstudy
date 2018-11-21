@@ -1,0 +1,1130 @@
+<!DOCTYPE Html>
+<html>
+<head>
+	<meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height = device-height, target-densitydpi = medium-dpi" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-app.js"></script>
+   
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.0/init.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCJOzzMyTa5cMBNenRGWSvRSrPuIoUJo5s",
+    authDomain: "basicphonegap-220cb.firebaseapp.com",
+    databaseURL: "https://basicphonegap-220cb.firebaseio.com",
+    projectId: "basicphonegap-220cb",
+    storageBucket: "basicphonegap-220cb.appspot.com",
+    messagingSenderId: "303887222638"
+  };
+  firebase.initializeApp(config);
+</script>
+	</head>
+	<body>
+		<div class="app">
+            <div data-role = "page" id = "home">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+
+                    <h1 style="color: #6666ff" >WeOms</h1>
+                </header>
+                <div data-role = "content" style="background-color: #e6e6ff;" >
+                	<img src = "https://firebasestorage.googleapis.com/v0/b/basicphonegap-220cb.appspot.com/o/44237334_1869357606466973_4700172128660488192_n.jpg?alt=media&token=6fc858fa-bfde-47e6-8fc4-fe96f06629e5" width = "10%" height = "10%" style = "display:inline-block; position:relative; left:45%; border-radius: 2%;">
+
+                  		<div id = "signinalert"></div>
+                    <h5 style="text-align: center;">Already a member?</h5>
+                    <a href="#popupLogin" data-rel="popup" data-position-to="window" data-transition = "pop" class="ui-btn ui-corner-all">Sign In</a>
+                    <div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+                     <form>
+                     <div style="padding:10px 20px;">
+                      <h3>Please sign in</h3>
+                      
+                    <label for="un" class="ui-hidden-accessible">Email:</label>
+                     <input type="text" name="email" id="un" value="" placeholder="Email" data-theme="a">
+                     <label for="pw" class="ui-hidden-accessible">Password:</label>
+                     <input type="password" name="password" id="pw" value="" placeholder="Password" data-theme="a">
+                    <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check" id = "signInButton" style="background-color: #4d4dff;">Sign in</button>
+                    <p id = "forgotpassword" style = "text-align: center; color:blue;"> Forgot Password? </p>
+                     </div>
+                     </form>
+                </div>
+                    <h5 style="text-align: center;">Not one? Register!</h3>
+                    <a href="#register" class="ui-btn ui-corner-all">Sign Up</a>
+                    <div id = "testing"></div>
+                    
+
+                    
+            </div>
+
+            <footer data-role = "footer">
+                <p style = "text-align:center;">Copyright of WeOms @ 2018</p>
+            </footer>
+            </div>
+            <div data-role = "page" id = "register">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+                    <h1 style="color: #6666ff;">WeOms</h1>
+                </header>
+                <div data-role = "content" style="background-color: #e6e6ff;">
+                    <h2 style="text-align: center;">Register and Go!</h2>
+                    <form>
+                        <input type="text" name="firstname" id="firstname"  placeholder="First Name">
+                        <input type="text" name="lastname" id="lastname"  placeholder="Last Name">
+                        <input type="email" name="email" id="email"  placeholder="Email Address">
+                        
+                        <input type="password" name="password" id = "password" placeholder="Password">
+                        <input type="text" name="major" id="major" list = "chocType"  placeholder="Major">
+                        
+<datalist id="chocType">
+  <option value="Accounting">
+  <option value="Agricultural Studies">
+  <option value="Alternative Energy">
+    <option value="Applied Mathematics">
+        <option value="Art">
+            <option value="Asian Studies">
+        <option value="Athletic Coaching">
+            <option value="Athletic Training">
+                <option value="Biochemistry">
+                    <option value="Biology">
+                        <option value="Black Studies">
+                            <option value=" Business Chemistry">
+                                <option value="Chemical Physics">
+                                    <option value="Chemistry">
+                                        <option value="Communication">
+                                            <option value="Computer Information System">
+                                                <option value="Computer Science">
+                                                    <option value="Creative Writing">
+                                                        <option value="Criminal Justice">
+                                                            <option value="Cyber Security">
+                                                                <option value="Economics">
+                                                                    <option value="Electrical Engineering">
+                                                                        <option value="Elementary Education">
+                                                                            <option value="Elementary Teaching for International Student">
+                                                                                <option value="Emergency Management">
+                                                                        <option value="Engineering and Technology">
+        <option value="Engineering Technology Management">
+            <option value="English">
+                <option value="Entrepreneurship">
+                    <option value="Exercise Science">
+                        <option value="Family Business Management">
+                            <option value="Finance">
+                                <option value="Fine Arts">
+                                    <option value="French">
+                                        <option value="Gender Studies">
+                                            <option value="General Business">
+        <option value="Geography">
+            <option value="Geospatial Techniques">
+                <option value="Gerontology">
+                    <option value="Graphic Design">
+                        <option value="Health Science">
+                            <option value="History">
+                                <option value="International Business">
+                                    <option value="International Studies">
+                                        <option value="Japanese">
+                                            <option value = "Kinesiology">
+                                                <option value = "Leadership and Service">
+                                                    <option value = "Legal Philosophy">
+                                                        <option value = "Legal Studies">
+                                                            <option value = "Literature">
+<option value = "Management">
+    <option value = "Marketing">
+        <option value = "Mathematics">
+            <option value = "Mechanical Engineering">
+                <option value = "Medical Laboratory Science">
+                    <option value = "Middle/Secondary Teaching for International Student">
+                        <option value = "Modern Foreign Languages">
+                            <option value = "Music">
+                                <option value = "Musical Theatre">
+                                    <option value = "Neuroscience">
+                                        <option value = "Nursing">
+                                            <option value = "Occupational Therapy">
+                                                <option value = "Optical Physics">
+                                                    <option value = "Philosophy">
+<option value = "Physical Education">
+    <option value = "Physics">
+        <option value = "Political Science">
+            <option value = "Physical Education">
+                <option value = "Pre-Agriculture/MSU-bound">
+                    <option value = "Pre-Health Professions">
+                        <option value = "Pre-Law">
+                            <option value = "Professional and Technical Writing">
+                                <option value = "Professional Sales">
+                                    <option value = "Psychology">
+                                        <option value = "Public Administration">
+                                            <option value = "Public History">
+                                                <option value = "Religious Studies">
+                                                    <option value = "Secondary Education">
+                                                        <option value = "Social Work">
+                                                            <option value = "Sociology">
+                                                                <option value = "Spanish">
+                                                                    <option value = "Spanish for Health Professions">
+                                                                        <option value = "Special Education">
+                                                                            <option value = "Supply Chain Management">
+                                                                                <option value = "Theatre">
+                                                                                    <option value = "Youth Services">
+</datalist>
+                        <div class="ui-field-contain">
+    <label for="select-native-1">Level:</label>
+    <select name="select-native-1" id="select-native-1">
+        <option value="1">Freshman</option>
+        <option value="2">Sophomore</option>
+        <option value="3">Junior</option>
+        <option value="4">Senior</option>
+    </select>
+</div>
+                        
+                        <input type="file" id = "myFile" name="photo" style="display: block; width: 100%; max-width: 100%;">
+                        <button  type = "submit" class="ui-btn ui-shadow" id = "registerbutton" style="background-color:#4d4dff; color:white; font-weight: bold; ">Sign Up</button>
+
+                    </form>
+
+                </div>
+                <footer data-role = "footer">
+                   <p style = "text-align:center;"> Copyright of WeOms @ 2018</p>
+                </footer>
+            </div>
+             <div data-role = "page" id = "profile">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+                	
+
+                    <h1 style="color: #6666ff" >WeOms</h1>
+                
+                    <a href="#popupMenu" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" style="background-color: #4d4dff; color: white;">Menu</a>
+<div data-role="popup" id="popupMenu" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Choose an action</li>
+            <li><a href="" id = "profile1" >Profile</a></li>
+            <li><a href="" id="logOutButton1" >Log Out</a></li>
+            <li><a href="" id = "settings1">Settings</a></li>
+        </ul>
+</div>
+                </header>
+                <div data-role = "content" style="background-color: #e6e6ff;">
+                	<form>
+                	 <input type="text" name="major" style = "position:relative; top:5%;" id="searchmajor" list = "chocType"  placeholder="I am looking for a...">
+                	 
+                        
+<datalist id="chocType">
+  <option value="Accounting">
+  <option value="Agricultural Studies">
+  <option value="Alternative Energy">
+    <option value="Applied Mathematics">
+        <option value="Art">
+            <option value="Asian Studies">
+        <option value="Athletic Coaching">
+            <option value="Athletic Training">
+                <option value="Biochemistry">
+                    <option value="Biology">
+                        <option value="Black Studies">
+                            <option value=" Business Chemistry">
+                                <option value="Chemical Physics">
+                                    <option value="Chemistry">
+                                        <option value="Communication">
+                                            <option value="Computer Information System">
+                                                <option value="Computer Science">
+                                                    <option value="Creative Writing">
+                                                        <option value="Criminal Justice">
+                                                            <option value="Cyber Security">
+                                                                <option value="Economics">
+                                                                    <option value="Electrical Engineering">
+                                                                        <option value="Elementary Education">
+                                                                            <option value="Elementary Teaching for International Student">
+                                                                                <option value="Emergency Management">
+                                                                        <option value="Engineering and Technology">
+        <option value="Engineering Technology Management">
+            <option value="English">
+                <option value="Entrepreneurship">
+                    <option value="Exercise Science">
+                        <option value="Family Business Management">
+                            <option value="Finance">
+                                <option value="Fine Arts">
+                                    <option value="French">
+                                        <option value="Gender Studies">
+                                            <option value="General Business">
+        <option value="Geography">
+            <option value="Geospatial Techniques">
+                <option value="Gerontology">
+                    <option value="Graphic Design">
+                        <option value="Health Science">
+                            <option value="History">
+                                <option value="International Business">
+                                    <option value="International Studies">
+                                        <option value="Japanese">
+                                            <option value = "Kinesiology">
+                                                <option value = "Leadership and Service">
+                                                    <option value = "Legal Philosophy">
+                                                        <option value = "Legal Studies">
+                                                            <option value = "Literature">
+<option value = "Management">
+    <option value = "Marketing">
+        <option value = "Mathematics">
+            <option value = "Mechanical Engineering">
+                <option value = "Medical Laboratory Science">
+                    <option value = "Middle/Secondary Teaching for International Student">
+                        <option value = "Modern Foreign Languages">
+                            <option value = "Music">
+                                <option value = "Musical Theatre">
+                                    <option value = "Neuroscience">
+                                        <option value = "Nursing">
+                                            <option value = "Occupational Therapy">
+                                                <option value = "Optical Physics">
+                                                    <option value = "Philosophy">
+<option value = "Physical Education">
+    <option value = "Physics">
+        <option value = "Political Science">
+            <option value = "Physical Education">
+                <option value = "Pre-Agriculture/MSU-bound">
+                    <option value = "Pre-Health Professions">
+                        <option value = "Pre-Law">
+                            <option value = "Professional and Technical Writing">
+                                <option value = "Professional Sales">
+                                    <option value = "Psychology">
+                                        <option value = "Public Administration">
+                                            <option value = "Public History">
+                                                <option value = "Religious Studies">
+                                                    <option value = "Secondary Education">
+                                                        <option value = "Social Work">
+                                                            <option value = "Sociology">
+                                                                <option value = "Spanish">
+                                                                    <option value = "Spanish for Health Professions">
+                                                                        <option value = "Special Education">
+                                                                            <option value = "Supply Chain Management">
+                                                                                <option value = "Theatre">
+                                                                                    <option value = "Youth Services">
+</datalist>
+<button type = "submit" id = "sean"> Search </button>
+</form>
+
+<div id = "welcome"></div>
+
+                    <img src="" id = profilepicture width = "30%" height = "30%" style="border-radius: 50%; display: inline-block; position: relative; left: 35%; max-width:30%; max-height:30%; border-style: solid; border-color: blue; border-width: 2px;">
+                    <div id = "cv">
+                    
+                </div>
+                        
+                    </div>
+
+
+
+                           
+    <div data-role="footer">
+    	<p style = "text-align:center;"> Copyright of WeOms @ 2018</p>
+        
+    </div>
+                </div>
+                <div data-role = "page" id = "verification">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+                    
+       </header>
+        <div data-role = "content" id = "notice" style="background-color: #e6e6ff;"></div>
+               
+
+
+
+                           
+    <div data-role="footer">
+        
+    </div>
+                </div>
+                <div data-role = "page" id = "settings">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+                	<h1 style="color: #6666ff" >WeOms</h1>
+                	<a href="#popupMenu3" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" style="background-color: #4d4dff; color: white;">Menu</a>
+<div data-role="popup" id="popupMenu3" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Choose an action</li>
+            <li><a href="" id = "profile2">Profile</a></li>
+            <li><a href="" id="logOutButton2" >Log Out</a></li>
+            <li><a href="" id = "settings2">Settings</a></li>
+        </ul>
+</div>
+                    
+       </header>
+        <div data-role = "content" id = "notice" style="background-color: #e6e6ff;">
+        	<h4 style = "display: inline-block; float:left; color:#A52A2A; text-align: center;"> Your Information</h4>
+        	<p id = "settingfullname"></p>
+        	<a href="#editFullname" data-rel="popup" data-position-to="window" data-transition = "pop" class="ui-btn ui-corner-all">Edit</a>
+                    <div data-role="popup" id="editFullname" data-theme="a" class="ui-corner-all">
+                    	<form>
+                    		<input type = "text"  name = "lastname" placeholder="New Firstname" id = "newfirstname">
+                    		<input type="text" name="lastname" placeholder="New Lastname" id = "newlastname">
+                    		<button type = "submit" id = "editnamebutton"> Save </button>
+                    	</form>
+                    </div>
+        	<p id = "settingemail"></p>
+        	<p id = "settinglevel"></p>
+        	<a href="#editLevel" data-rel="popup" data-position-to="window" data-transition = "pop" class="ui-btn ui-corner-all">Edit </a>
+                    <div data-role="popup" id="editLevel" data-theme="a" class="ui-corner-all">
+                    	<form>
+                    		<div class="ui-field-contain">
+    <label for="select-native-2">Level:</label>
+    <select name="select-native-2" id="select-native-2">
+        <option value="Freshman">Freshman</option>
+        <option value="Sophomore">Sophomore</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+    </select>
+</div>
+<button type = "submit" id = "editlevelsubmit"> Save </button>
+
+                    	</form>
+                    </div>
+        </div>
+
+        <p style="text-align: center;color:#A52A2A;" id = "resetpassword" > Reset Password </p>
+        <a href="#popupDelete" data-rel="popup" data-position-to="window" data-transition = "pop" class="ui-btn ui-corner-all">Delete Profile</a>
+                    <div data-role="popup" id="popupDelete" data-theme="a" class="ui-corner-all">
+                    	<p> You sure want to delete your profile? </p>
+                    	<div id = "deleteprofile" style="background-color:blue; color:white; font-weight: bold;"> Yes </div>
+
+                    </div>
+               
+
+
+
+                           
+    <div data-role="footer">
+    	<p style = "text-align:center;"> Copyright of WeOms @ 2018</p>
+        
+    </div>
+                </div>
+
+                <div data-role = "page" id = "resultpage">
+                <header data-role = "header" style="background-color: #ff4d4d;">
+
+                	
+
+                    <h1 style="color: #6666ff" >WeOms</h1>
+                	<a href="#popupMenu2" data-rel="popup" data-transition="slideup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-gear ui-btn-icon-left ui-btn-a" style="background-color: #4d4dff; color: white;">Menu</a>
+<div data-role="popup" id="popupMenu2" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;">
+            <li data-role="list-divider">Choose an action</li>
+            <li><a href="" id = "profile3">Profile</a></li>
+            <li><a href="" id="logOutButton3" >Log Out</a></li>
+            <li><a href="" id = "settings3">Settings</a></li>
+        </ul>
+</div>
+                    
+       </header>
+        <div data-role = "content" id = "resultpagehere" style="background-color: #e6e6ff;">
+        	<img src="" id = "seepicture" width = "30%" height = "30%" style="border-radius: 50%; display: inline-block; position: relative; left: 35%; max-width:30%; max-height:30%; border-style: solid; border-color: blue; border-width: 2px;">
+        	<div id = "seecv" style = "display:inline-block;  width:100%; max-width:100%; height:30%; max-height:30%; padding:2%;"></div>
+        	<a href = "" id = "back" style = "display: inline-block; float:left;">Back</a>
+        	<a href = "" id = "next" style = "display:inline-block; float:right;"> Next </a>
+
+
+        	
+        </div>
+               
+
+
+
+                           
+    <div data-role="footer">
+    	<small style = "text-align:center;"> Copyright of WeOms @ 2018</small>
+        
+    </div>
+                </div>
+
+             
+		<script type="text/javascript" src="cordova.js"></script>
+         <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        
+        <script>
+
+        	document.addEventListener("deviceready", onDeviceReady, false);
+
+  function onDeviceReady(){
+
+
+
+let registerButton = document.getElementById('registerbutton');
+let signInButton = document.getElementById('signInButton');
+let searchPeople = document.getElementById('searchmajor');
+let bill = document.getElementById('sean');
+let hereresult = document.getElementById('resultpagehere');
+let seepicture = document.getElementById('seepicture');
+let seecv = document.getElementById('seecv');
+let next = document.getElementById('next');
+let back = document.getElementById('back');
+let profPic = document.getElementById('profilepicture');
+let resultArray = [];
+let here = document.getElementById('cv');
+let i = 0;
+let signinalert = document.getElementById('signinalert');
+let thisItem;
+let settingfullname = document.getElementById('settingfullname');
+let settingemail = document.getElementById('settingemail');
+let settinglevel = document.getElementById('settinglevel');
+let settingsone = document.getElementById('settings1');
+let settingstwo = document.getElementById('settings2');
+let settingsthree = document.getElementById('settings3'); 
+let profileone = document.getElementById('profile1');
+let profiletwo = document.getElementById('profile2');
+let profilethree = document.getElementById('profile3');
+const btnLogOutone = document.getElementById("logOutButton1");
+const btnLogOuttwo = document.getElementById("logOutButton2");
+const btnLogOutthree = document.getElementById("logOutButton3");
+let loginWelcome = document.getElementById('loginWelcome');
+let deleteProfile = document.getElementById('deleteprofile');
+let resetpassword = document.getElementById('resetpassword');
+let forgotpassword = document.getElementById('forgotpassword');
+
+
+
+
+
+
+var user;
+
+
+
+
+
+registerButton.addEventListener('click', e => {
+	let firstname = document.getElementById('firstname').value;
+        		let lastname = document.getElementById('lastname').value;
+        		let email = document.getElementById('email').value;
+        		let password = document.getElementById('password').value;
+        		let major = document.getElementById('major').value;
+        		let level = document.getElementById('select-native-1').value;
+        		let file = document.getElementById('myFile').files[0]; 
+        		let note = document.getElementById('notice');
+        		
+        	
+
+        		firebase.auth().createUserWithEmailAndPassword(email, password).then(function(response){
+        			console.log(response);
+        			user = response.user;
+
+        			return user 
+
+        			
+        			
+        			
+
+        			
+        			
+
+
+        			
+
+
+
+
+        			
+        			
+        			
+        		}).then(function(newUser){
+
+        			if(newUser){
+        			console.log(newUser.uid);
+        			const db = firebase.database();
+        			const storageRef = firebase.storage().ref(newUser.uid + '/' + file.name);
+
+        			const userRef = db.ref('Users/' + newUser.uid);
+        			const searchUser = db.ref(major + '/' + newUser.uid)
+        			
+
+        			
+
+
+
+        			   storageRef.put(file).then(function(result){
+        				storageRef.getDownloadURL().then(function(url){
+        					profPic.src = url; 
+        					searchUser.set({
+        					'name' : firstname + ' ' + lastname,
+        					'major': major,
+        					'email': email,
+        					'level': level,
+        					'id': newUser.uid,
+        					'url': url
+        				
+        			})
+        					userRef.set({
+        						'name':firstname + ' ' + lastname,
+        						'major': major,
+        						'email': email,
+        						'level': level,
+        						'id': newUser.uid,
+        						'url': url 
+        			})
+        					
+        					
+        				})
+        			});
+
+        			
+
+        			console.log(JSON.stringify(newUser));
+        			console.log(newUser.uid);
+        			
+        			return userRef
+        			
+
+        		
+
+
+        			
+        			
+        		}
+
+        		else{
+        			console.log("Sorry, you cannot do this...")
+        		}
+
+
+        		}).then(function(activeUser){
+        			
+        			
+        			 
+        			
+        			activeUser.once('value', function(snapshot){
+        				thisItem = '<h1>' + snapshot.val().name + '</h1>'; 
+        				thisItem += '<p style = "font-weight:bold;"> You are a ' + snapshot.val().major + 'student </p>'
+        				thisItem += '<span>' + snapshot.val().level + '</span>'
+
+        			})
+
+        			
+        		
+        			
+        		
+        			here.innerHTML = thisItem;
+        			firebase.auth().currentUser.sendEmailVerification().then(function(){
+        				signinalert.innerHTML = "<h4> An Email with a verification link has been sent to your email, Please verify your email and sign in </h4>"; 
+        				firebase.auth().signOut().then(function(){
+						user = null;
+			
+						$.mobile.navigate( "#home");
+
+					}).catch(function(error){
+							console.log(error.code);
+					})
+
+
+
+        			}).catch(function(error){
+        				console.log("Did not work out");
+        			})
+        			
+        			//$.mobile.navigate( "#profile");
+        		
+
+
+        		}).catch(function(error){
+        				const errorCode = error.code;
+        			const errorMessage = error.message;
+        			console.log(errorCode + errorMessage);
+
+
+        			})
+
+
+
+        			})
+
+signInButton.addEventListener('click',  e =>{
+
+	if(user){
+		console.log("Some one is already logged in");
+	}
+
+
+	else{
+	let email = document.getElementById('un').value;
+	let password = document.getElementById('pw').value;
+	firebase.auth().signInWithEmailAndPassword(email, password).then(function(response){
+		console.log(response);
+		user = response.user;
+
+		if(user.emailVerified === true){
+			let nowUser = firebase.database().ref('Users/' + user.uid); 
+		nowUser.on('value', function(snapshot){
+			profPic.src = snapshot.val().url;
+			
+			console.log(snapshot.val().name);
+			thisItem = '<h1 style = "text-align:center;">' + snapshot.val().name + '</h1>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;"> Major:' + ' ' + snapshot.val().major + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > I am a ' + snapshot.val().level + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > Email:' + ' ' + snapshot.val().email + '</p>'; 
+
+			here.innerHTML = thisItem; 
+
+
+		})
+		
+
+
+
+		console.log(user.email);
+		$.mobile.navigate( "#profile");
+		}
+
+		else{
+			firebase.auth().currentUser.sendEmailVerification().then(function(){
+				signinalert.innerHTML = "<h3 style = 'text-align:center; color:red; font-weight:bold;'> Email with verification link has been sent to you, please click on it and sign it back again</h3>"
+				firebase.auth().signOut().then(function(){
+					user = null;
+			
+			$.mobile.navigate( "#home");
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+				
+
+			})
+		}
+		
+		
+
+	}).catch(function(error){
+		errorMessage = error.Message;
+		console.log(errorMessage);
+		signinalert.innerHTML = "<p style = 'text-align:center; background-color:red; color:white;'> Incorrect email or password! </p>"; 
+	})
+}
+})
+
+
+
+btnLogOutone.addEventListener('click', e => {
+	if(user){
+		firebase.auth().signOut().then(function(){
+			user = null;
+			signinalert.innerHTML = "<p style = ' border-radius:10px; color:blue;text-align:center;'> You have Successfully Logged Out! We will miss you!!! </p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+	}
+
+	else{
+		console.log("you are already logged out");
+	}
+})
+
+
+btnLogOuttwo.addEventListener('click', e => {
+	if(user){
+		firebase.auth().signOut().then(function(){
+			user = null;
+			signinalert.innerHTML = "<p style = ' border-radius:10px; color:blue;text-align:center;'> You have Successfully Logged Out! We will miss you!!! </p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+	}
+
+	else{
+		console.log("you are already logged out");
+	}
+})
+
+
+btnLogOutthree.addEventListener('click', e => {
+	if(user){
+		firebase.auth().signOut().then(function(){
+			user = null;
+			signinalert.innerHTML = "<p style = ' border-radius:10px; color:blue;text-align:center;'> You have Successfully Logged Out! We will miss you!!! </p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+	}
+
+	else{
+		console.log("you are already logged out");
+	}
+})
+
+
+
+bill.addEventListener('click', e => {
+	if(user && user.emailVerified === true){
+		resultArray.length = 0; 
+
+		
+		const searchRef = firebase.database().ref(searchPeople.value + '/'); 
+	
+		
+		
+		
+		searchRef.on('value', function(snapshot){
+			snapshot.forEach(function(childsnapshot){
+				resultArray.push({
+					firstname : childsnapshot.val().name,
+					major : childsnapshot.val().major,
+					level : childsnapshot.val().level,
+					id : childsnapshot.val().id,
+					email: childsnapshot.val().email,
+					url : childsnapshot.val().url
+				})
+				
+			})
+		
+			
+
+			
+
+			console.log(resultArray);
+
+			if (resultArray != []){
+
+			seepicture.src = resultArray[0].url;
+
+			//let displayItem = ;
+			displayItem = "<h3 style = 'text-align:center; font-weight:bold;'>" + resultArray[0].name + "</h3>";
+			displayItem += '<p> Major:' + ' ' + resultArray[0].major + '</p>';
+			displayItem += '<p> Level:' + ' ' + resultArray[0].level + '</p>';
+			displayItem += "<p style = 'text-align:center; ' > Eamil:" + ' ' + resultArray[0].email + '</p>'; 
+		seecv.innerHTML = displayItem;
+	}
+
+	else{
+		console.log("No result");
+	}
+
+
+			
+
+             
+             
+			
+			
+	})	
+		
+
+		$.mobile.navigate( "#resultpage");
+
+	}
+	else{
+		console.log("Please log in");
+	}
+})
+
+	
+
+
+	next.addEventListener('click', function(){
+
+		if (i < resultArray.length && i !== resultArray.length - 1 ){
+		
+
+			seepicture.src = resultArray[i].url; 
+			displayItem = "<h3 style = 'text-align:center; font-weight:bold;'>" + resultArray[i].name + "</h3>";
+			displayItem += '<p> Major:' + ' ' + resultArray[i].major + '</p>';
+			displayItem += '<p> Level:' + ' ' + resultArray[i].level + '</p>';
+			displayItem += "<p style = 'text-align:center; ' > Eamil:" + ' ' + resultArray[i].email + '</p>'; 
+			seecv.innerHTML = displayItem; 
+
+
+			 i = ++i;
+			 console.log(i);
+		}
+
+		else{
+			console.log("That was the last result")
+		}
+	})
+			
+back.addEventListener('click', function(){
+			i = --i; 
+
+		if (i < resultArray.length && i >= 0){
+			seepicture.src = resultArray[i].url; 
+			displayItem = "<h3 style = 'text-align:center; font-weight:bold;'>" + resultArray[i].name + "</h3>";
+			displayItem += '<p> Major:' + ' ' + resultArray[i].major + '</p>';
+			displayItem += '<p> Level:' + ' ' + resultArray[i].level + '</p>';
+			displayItem += "<p style = 'text-align:center; ' > Eamil:" + ' ' + resultArray[i].email + '</p>'; 
+			seecv.innerHTML = displayItem; 
+			
+
+		}
+		else{
+			console.log("Its too far");
+		}
+	})
+
+	profileone.addEventListener('click', function(e){
+		if(user){
+
+			searchPeople = " "; 
+			
+		
+		let nowUser = firebase.database().ref('Users/' + user.uid); 
+		nowUser.on('value', function(snapshot){
+			profPic.src = snapshot.val().url;
+			thisItem = '<h1 style = "text-align:center;">' + snapshot.val().name + '</h1>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;"> Major:' + ' ' + snapshot.val().major + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > I am a ' + snapshot.val().level + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > Email:' + ' ' + snapshot.val().email + '</p>'; 
+			console.log(snapshot.val().name);
+
+
+
+		})
+		here.innerHTML = thisItem; 
+
+
+		
+		$.mobile.navigate( "#profile");
+		e.preventDefault();
+		}
+
+		else{
+			console.log("please login first");
+		}
+
+		
+		
+	})
+
+	profiletwo.addEventListener('click', function(e){
+		if(user){
+
+			searchPeople = " "; 
+			
+		
+		let nowUser = firebase.database().ref('Users/' + user.uid); 
+		nowUser.on('value', function(snapshot){
+			profPic.src = snapshot.val().url;
+			thisItem = '<h1 style = "text-align:center;">' + snapshot.val().name + '</h1>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;"> Major:' + ' ' + snapshot.val().major + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > I am a ' + snapshot.val().level + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > Email:' + ' ' + snapshot.val().email + '</p>'; 
+			console.log(snapshot.val().name);
+
+
+
+		})
+		here.innerHTML = thisItem; 
+
+
+		
+		$.mobile.navigate( "#profile");
+		e.preventDefault();
+		}
+
+		else{
+			console.log("please login first");
+		}
+	})
+
+	profilethree.addEventListener('click', function(e){
+		if(user){
+			searchPeople = " "; 
+		
+		let nowUser = firebase.database().ref('Users/' + user.uid); 
+		nowUser.on('value', function(snapshot){
+			profPic.src = snapshot.val().url;
+			thisItem = '<h1 style = "text-align:center;">' + snapshot.val().name + '</h1>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;"> Major:' + ' ' + snapshot.val().major + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > I am a ' + snapshot.val().level + '</p>';
+			thisItem += '<p style = "color:#d55d5d; font-weight:bold;" > Email:' + ' ' + snapshot.val().email + '</p>'; 
+			console.log(snapshot.val().name);
+
+
+
+		})
+		here.innerHTML = thisItem; 
+
+
+		
+		$.mobile.navigate( "#profile");
+		e.preventDefault();
+		}
+
+		else{
+			console.log("please login first");
+		}
+	})
+
+	settingsone.addEventListener('click',function(e){
+
+		if(user && user.emailVerified === true){
+
+			let nowUser = firebase.database().ref('Users/' + user.uid); 
+			nowUser.on('value', function(snapshot){
+			settingfullname.innerHTML = '<p> Name: ' + ' ' + snapshot.val().name + '</p><br>';
+			settingemail.innerHTML = '<p> Email: ' + ' ' + snapshot.val().email + '</p><br>';
+			settinglevel.innerHTML = '<p> Level' + ' ' + snapshot.val().level + '</p>';
+			$.mobile.navigate( "#settings");
+
+				e.preventDefault();
+
+		})
+
+		}
+
+		else{
+			console.log("not possible");		}
+	})
+
+	settingstwo.addEventListener('click',function(e){
+
+		if(user && user.emailVerified === true){
+
+			let nowUser = firebase.database().ref('Users/' + user.uid); 
+			nowUser.on('value', function(snapshot){
+			settingfullname.innerHTML = '<p> Name: ' + ' ' + snapshot.val().name + '</p><br>';
+			settingemail.innerHTML = '<p> Email: ' + ' ' + snapshot.val().email + '</p> <br>';
+			settinglevel.innerHTML = '<p> Level' + ' ' + snapshot.val().level + '</p>';
+			$.mobile.navigate( "#settings");
+
+				e.preventDefault();
+
+		})
+
+		}
+
+		else{
+			console.log("not possible");		}
+	})
+
+	settingsthree.addEventListener('click',function(e){
+
+		if(user && user.emailVerified === true){
+
+			let nowUser = firebase.database().ref('Users/' + user.uid); 
+			nowUser.on('value', function(snapshot){
+			settingfullname.innerHTML = '<p> Name: ' + ' ' + snapshot.val().name + '</p> <br>';
+			settingemail.innerHTML = '<p> Email: ' + ' ' + snapshot.val().email + '</p> <br>';
+			settinglevel.innerHTML = '<p> Level' + ' ' + snapshot.val().level + '</p>';
+			$.mobile.navigate( "#settings");
+
+				e.preventDefault();
+
+		})
+
+		}
+
+		else{
+			console.log("not possible");	
+			}	
+	})
+
+	resetpassword.addEventListener('click', function(){
+		if(user){
+			firebase.auth().sendPasswordResetEmail(user.email).then(function(e){
+				firebase.auth().signOut().then(function(){
+				user = null;
+				signinalert.innerHTML = "<p style = ' border-radius:10px; color:blue;text-align:center;'> We have sent you email to reset the password, please login back after you reset the password</p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+
+
+
+			}).catch(function(error){
+
+			})
+		}
+
+		else{
+			console.log("Did not work");
+		}
+	})
+
+	forgotpassword.addEventListener('click', function(){
+		
+			firebase.auth().sendPasswordResetEmail(forgotpassword.value).then(function(e){
+				
+				signinalert.innerHTML = "<p style = ' border-radius:10px; color:blue;text-align:center;'> We have sent you email to reset the password, please login back after you reset the password</p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+		}).catch(function(error){
+			console.log(error.code);
+		})
+
+
+
+			})
+	
+
+	deleteProfile.addEventListener('click', function(e){
+		if(user){
+			user.delete().then(function(e){
+				signinalert.innerHTML = "<p> Your Profile has been deleted! </p>"
+			$.mobile.navigate( "#home");
+			e.preventDefault();
+
+			}).catch(function(error){
+				console.log("Could not delete");
+			})
+		}
+	})
+
+
+	editnamebutton.addEventListener('click', function(e){
+		let newfirstname = document.getElementById('newfirstname');
+		let newlastname = document.getElementById('newlastname');
+		
+	})
+
+}
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+        
+</body>
+
+</html>
